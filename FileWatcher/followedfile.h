@@ -3,12 +3,20 @@
 
 #include <QObject>
 #include <QString>
+
+
 class FollowedFile: public QObject
 {
     Q_OBJECT
 public:
     FollowedFile(const QString& fileName);
     ~FollowedFile();
+    qint64 getSize();
+    bool getIsExist();
+
+    QString getInfo();
+    void updatedFile();
+
 
 private:
     QString path;
