@@ -29,24 +29,27 @@ bool FollowedFile::getIsExist(){
 QString FollowedFile::getInfo(){
     QString info = "File ";
 
-    if(getIsExist()){
+    if(!getIsExist()){
 
-        //Файл существует , файл не  пустой - на экран выводится факт существования файла
-        //и его  размер.]
-        if(size > 0){
-            info += path + QString(" exist. ") + QString("Size: ") +  QString::number(size);
-        }
+        //Файл не существует - на экран выводится информация о том что файл не существует.
+        info += path + QString(" doesn't exist.");
+    }
+
+    else if(isChange){
 
         //Файл существует, файл был изменен - на экран выводится факт существования файла,
         //сообщение о том что файл был изменен и его размер.
-        else{
-            info += path + QString(" was changed. ") + QString("Size: ") +  QString::number(size);
-        }
+
+        info += path + QString(" was changed. ") + QString("Size: ") +  QString::number(size);
     }
     else{
 
-        //Файл не существует - на экран выводится информация о том что файл не существует.
-          info += path + QString(" doesn't exist.");
+        //Файл существует , файл не  пустой - на экран выводится факт существования файла
+        //и его  размер.]
+
+        info += path + QString(" exist. ") + QString("Size: ") +  QString::number(size);
+
+
     }
 
     return info;
