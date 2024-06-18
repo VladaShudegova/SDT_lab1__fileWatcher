@@ -47,3 +47,22 @@ void FileManager::removeFile(const QString& filePath){
         }
     }
 }
+
+
+void FileManager::updateFilesInfo(){
+    for(int i = 0; i < files.size(); i++){
+        files.at(i)->updatedInfo();
+        qDebug() << "Updated " << files.at(i)->getPath();
+    }
+
+    if(!changedFiles.empty()){
+        for(int i = 0; i < changedFiles.size(); i++){
+            changedFiles.at(i)->getInfo();
+        }
+        changedFiles.clear();
+    }
+    else{
+        qDebug() << "List of changed files is empty";
+    }
+
+}
