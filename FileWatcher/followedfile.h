@@ -9,16 +9,22 @@ class FollowedFile: public QObject
 {
     Q_OBJECT
 public:
+     // Объявление явного конструктора,
+    //ПРЕДОТВРАЩАЕТ ошибку преобразования строки fileName в объект класса : FollowedFile file = fileName;
     explicit FollowedFile(const QString& fileName);
     ~FollowedFile();
     qint64 getSize();
     bool getIsExist();
-
-    QString getInfo();
     void updatedInfo();
+    QString getInfo();
+
+
 
 signals:
     void fileUpdated(FollowedFile*);
+
+
+
 
 private:
     QString path;
