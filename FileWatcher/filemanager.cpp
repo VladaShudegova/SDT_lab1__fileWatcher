@@ -26,5 +26,5 @@ void FileManager::addFile(const QString& filePath){
 }
 
 void FileManager::addToChangedFiles(FollowedFile* file){
-    filesChanged.push_back(file);
+    сhangedFiles.push_back(file);
 }

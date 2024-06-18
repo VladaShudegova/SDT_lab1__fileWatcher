@@ -20,7 +20,7 @@ public slots:
 
 private:
     QVector<FollowedFile*> files;
-    QVector<FollowedFile*> filesChanged;
+    QVector<FollowedFile*> сhangedFiles;
 };
 
 #endif // FILEMANAGER_H
