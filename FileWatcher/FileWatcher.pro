@@ -9,6 +9,7 @@ CONFIG += c++17 cmdline
 SOURCES += \
         filemanager.cpp \
         followedfile.cpp \
+        ilog.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -18,4 +19,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     filemanager.h \
-    followedfile.h
+    followedfile.h \
+    ilog.h
