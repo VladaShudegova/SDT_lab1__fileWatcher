@@ -13,14 +13,14 @@ public:
     ~FileManager();
 
     void addFile(const QString& filePath);
-
+    void removeFile(const QString& filePath);
 
 public slots:
     void addToChangedFiles(FollowedFile* file);
 
 private:
     QVector<FollowedFile*> files;
-    QVector<FollowedFile*> сhangedFiles;
+    QVector<FollowedFile*> changedFiles;
 };
 
 #endif // FILEMANAGER_H

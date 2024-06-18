@@ -70,3 +70,7 @@ void FollowedFile::updatedInfo(){
     }
 
 }
+
+QString FollowedFile::getPath(){
+    return path;
+}

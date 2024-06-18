@@ -17,7 +17,7 @@ public:
     bool getIsExist();
     void updatedInfo();
     QString getInfo();
-
+    QString getPath();
 
 
 signals:

@@ -26,5 +26,16 @@ void FileManager::addFile(const QString& filePath){
 }
 
 void FileManager::addToChangedFiles(FollowedFile* file){
-    сhangedFiles.push_back(file);
+    changedFiles.push_back(file);
+}
+
+
+void FileManager::removeFile(const QString& filePath){
+    for (auto it = files.begin(); it != files.end(); ++it) {
+        if ((*it)->getPath() == filePath) {
+            delete *it;
+            files.erase(it);
+            break;
+        }
+    }
 }
