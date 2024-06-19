@@ -1,6 +1,7 @@
 #include "filemanager.h"
 #include <followedfile.h>
 #include <QDebug>
+
 FileManager::FileManager(ILog* log)
 {
     logger = log;
@@ -9,6 +10,12 @@ FileManager::FileManager(ILog* log)
         qWarning("FileManager : Logger == nullptr");
     }
 }
+
+FileManager& FileManager::Instance(ILog* log){
+    static FileManager manager(log);
+    return manager;
+}
+
 
 FileManager::~FileManager()
 {

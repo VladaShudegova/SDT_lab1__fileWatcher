@@ -8,10 +8,14 @@
 class FileManager: public QObject
 {
     Q_OBJECT
+private:
+    FileManager(ILog*);
+    ~FileManager();
+    FileManager(FileManager const&) = default; //конструктор копирования
+    FileManager& operator = (FileManager const&) = delete; //удаляем оператор присваивания
 
 public:
-    explicit FileManager(ILog* log);
-    ~FileManager();
+    static FileManager& Instance(ILog* log);
 
     void addFile(const QString& filePath);
     void removeFile(const QString& filePath);
@@ -20,6 +24,7 @@ public:
 
 public slots:
     void addToChangedFiles(FollowedFile* file);
+
 
 private:
 
