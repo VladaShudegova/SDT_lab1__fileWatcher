@@ -1,14 +1,19 @@
 #include "filemanager.h"
 #include <followedfile.h>
 #include <QDebug>
-FileManager::FileManager()
+FileManager::FileManager(ILog* log)
 {
+    logger = log;
 
+    if(!logger){
+        qWarning("FileManager : Logger == nullptr");
+    }
 }
 
 FileManager::~FileManager()
 {
     files.clear();
+    changedFiles.clear();
 }
 
 void FileManager::addFile(const QString& filePath){
@@ -56,10 +61,15 @@ void FileManager::updateFilesInfo(){
     }
 
     if(!changedFiles.empty()){
-        for(int i = 0; i < changedFiles.size(); i++){
-            changedFiles.at(i)->getInfo();
+        if(logger){
+            for(int i = 0; i < changedFiles.size(); i++){
+                logger->log(changedFiles.at(i)->getInfo());
+            }
+            changedFiles.clear();
         }
-        changedFiles.clear();
+        else{
+        qWarning("updateFilesInfo() : logger == nullptr");
+        }
     }
     else{
         qDebug() << "List of changed files is empty";

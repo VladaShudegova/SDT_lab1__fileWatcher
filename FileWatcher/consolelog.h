@@ -8,7 +8,7 @@ class ConsoleLog : public ILog
 {
     Q_OBJECT
 public:
-    ConsoleLog();
+    ConsoleLog() = default;
     virtual void log(const QString& s) const override;
     virtual ~ConsoleLog() = default;
 };

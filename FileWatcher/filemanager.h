@@ -10,7 +10,7 @@ class FileManager: public QObject
     Q_OBJECT
 
 public:
-    explicit FileManager();
+    explicit FileManager(ILog* log);
     ~FileManager();
 
     void addFile(const QString& filePath);
