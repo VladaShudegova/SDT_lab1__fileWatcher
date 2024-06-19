@@ -1,15 +1,23 @@
 #include "app.h"
 #include <thread>
+#include <qDebug.h>
 #include "consolelog.h"
 
 void App::start(){
     ConsoleLog* cmd = new(std::nothrow) ConsoleLog();
 
-    inputFilesPath(cmd);
-    FileManager manager(cmd);
 
     while(true){
-        manager.updateFilesInfo();
+        inputFilesPath(cmd);
+        if(FileManager::Instance(cmd).isEmpty()){
+            qWarning("File Manager have not files for following");
+            continue;
+        }
+        break;
+    }
+
+    while(true){
+        FileManager::Instance(cmd).updateFilesInfo();
         std::this_thread::sleep_for( std::chrono::milliseconds( 1000 ) );
 
     }
@@ -18,23 +26,24 @@ void App::start(){
 
 void App::inputFilesPath(ILog* log){
     QTextStream input(stdin);
-    QTextStream output(stdin);
-    FileManager manager(log);
-    output << "input count of files for following" << Qt::endl;
-    int countFiles = 0;
+    QTextStream output(stdout);
 
-    do
+    output << "input count of files for following" << Qt::endl;
+    //qDebug()<< "Work";
+    int countFiles = 1;
+
+    while(true)
     {
         countFiles = input.readLine().toInt();
         if(countFiles <= 0){
-            output << "Wrong input";
+            output << " Wrong input ";
+            break;// continue;
         }
-
-    } while(countFiles <= 0);
-
+        break;
+    }
     for (int i = 0; i < countFiles; ++i) {
-        output << QString::number(i+1) + "input file path:" << Qt::endl;
+        output << QString::number(i+1) + " input file path:" << Qt::endl;
         QString path = input.readLine();
-        manager.addFile(path);
+        FileManager::Instance(log).addFile(path);
     }
 }

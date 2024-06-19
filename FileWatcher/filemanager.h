@@ -20,6 +20,7 @@ public:
     void addFile(const QString& filePath);
     void removeFile(const QString& filePath);
     void updateFilesInfo();
+    bool isEmpty();
 
 
 public slots:

@@ -9,10 +9,6 @@ FollowedFile::FollowedFile(const QString& filePath)
     path = filePath;
     size = file.size();
     isExist = file.exists();
-
-
-    // qDebug() << "New file  "<< filePath << " " << file.size() << "     ";
-    // qDebug() << file.exists();
 }
 
 FollowedFile::~FollowedFile()

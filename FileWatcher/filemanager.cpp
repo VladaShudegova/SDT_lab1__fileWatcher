@@ -64,7 +64,7 @@ void FileManager::removeFile(const QString& filePath){
 void FileManager::updateFilesInfo(){
     for(int i = 0; i < files.size(); i++){
         files.at(i)->updatedInfo();
-        qDebug() << "Updated " << files.at(i)->getPath();
+        //qDebug() << "Updated " << files.at(i)->getPath();
     }
 
     if(!changedFiles.empty()){
@@ -78,8 +78,14 @@ void FileManager::updateFilesInfo(){
         qWarning("updateFilesInfo() : logger == nullptr");
         }
     }
-    else{
-        qDebug() << "List of changed files is empty";
-    }
+//    else{
+//        qDebug() << "List of changed files is empty";
+//    }
 
+}
+
+
+bool FileManager::isEmpty(){
+
+    return files.empty();
 }
