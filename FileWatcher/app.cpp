@@ -29,15 +29,15 @@ void App::inputFilesPath(ILog* log){
     QTextStream output(stdout);
 
     output << "input count of files for following" << Qt::endl;
-    //qDebug()<< "Work";
+
     int countFiles = 1;
 
     while(true)
     {
         countFiles = input.readLine().toInt();
         if(countFiles <= 0){
-            output << " Wrong input ";
-            break;// continue;
+            output << " Wrong input "<< Qt::endl;
+            break; //continue;
         }
         break;
     }

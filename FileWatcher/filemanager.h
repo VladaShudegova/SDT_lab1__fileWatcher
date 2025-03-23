@@ -11,7 +11,7 @@ class FileManager: public QObject
 private:
     FileManager(ILog*);
     ~FileManager();
-    FileManager(FileManager const&) = default; //конструктор копирования
+    FileManager(FileManager const&) = delete; //конструктор копирования
     FileManager& operator = (FileManager const&) = delete; //удаляем оператор присваивания
 
 public:

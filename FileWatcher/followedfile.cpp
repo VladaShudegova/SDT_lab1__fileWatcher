@@ -53,7 +53,6 @@ QString FollowedFile::getInfo(){
 
 void FollowedFile::updatedInfo(){
     QFileInfo file(path);
-    //задать вопрос: о количестве вызовов file.exists()
 
     bool currentExist = file.exists();
     qint64 currentSize = file.size();
